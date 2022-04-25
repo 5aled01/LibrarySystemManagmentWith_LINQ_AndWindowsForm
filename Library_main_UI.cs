@@ -66,5 +66,37 @@ namespace Library
             Book_UI.Show();
 
         }
-    }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+            
+            int borrower_id = int.Parse(borrowerIdTextBox.Text);
+            int book_id = int.Parse(bookIdTextBox.Text);
+            DateTime borrowed_from = DateTime.Parse(FromTimePicker.Text);
+            DateTime borrowed_to = DateTime.Parse(ToTimePicker.Text);
+
+            var st = new borrower_detail
+            {
+                id_book = book_id,
+                borrowed_from = borrowed_from,
+                borrowed_to = borrowed_to,
+                returned = "NO",
+                borrower_id = borrower_id,
+            };
+
+            context.borrower_details.InsertOnSubmit(st);
+            context.SubmitChanges();
+            MessageBox.Show("Successfully Inserted bro");
+            loadData();
+        }
+            catch (Exception ex)
+            {
+                MessageBox.Show("collone vide ou (borrower id)/(book id) nexist pas , eseyer de remplire tout les colone correctement");
+            }
+    
+
 }
+    }
+

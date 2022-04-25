@@ -42,7 +42,7 @@ namespace Library
 
             var st = new book_detail
             {
-                id = livreid,
+              
                 book_title = BookTitle,
                 language_book = language,
                 no_copies = nbcopy,
@@ -146,6 +146,11 @@ namespace Library
             textBox4.Clear();
             textBox5.Clear();
             textBox6.Clear();
+
+        }
+
+        private void Book_Load(object sender, EventArgs e)
+        {
 
         }
     }

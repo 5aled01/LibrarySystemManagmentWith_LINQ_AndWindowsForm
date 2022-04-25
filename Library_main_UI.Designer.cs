@@ -38,15 +38,15 @@
             this.Update_button = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Insert = new System.Windows.Forms.Button();
+            this.bookIdTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.borrowerIdTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.FromTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.ToTimePicker = new System.Windows.Forms.DateTimePicker();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -140,21 +140,22 @@
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 13;
             // 
-            // button1
+            // Insert
             // 
-            this.button1.Location = new System.Drawing.Point(517, 174);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(141, 23);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Insert new borrower details";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Insert.Location = new System.Drawing.Point(517, 174);
+            this.Insert.Name = "Insert";
+            this.Insert.Size = new System.Drawing.Size(141, 23);
+            this.Insert.TabIndex = 14;
+            this.Insert.Text = "Insert new borrower details";
+            this.Insert.UseVisualStyleBackColor = true;
+            this.Insert.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // bookIdTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(545, 52);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 15;
+            this.bookIdTextBox.Location = new System.Drawing.Point(545, 52);
+            this.bookIdTextBox.Name = "bookIdTextBox";
+            this.bookIdTextBox.Size = new System.Drawing.Size(100, 20);
+            this.bookIdTextBox.TabIndex = 15;
             // 
             // label2
             // 
@@ -174,12 +175,12 @@
             this.label3.TabIndex = 19;
             this.label3.Text = "From";
             // 
-            // textBox5
+            // borrowerIdTextBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(545, 134);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 20;
+            this.borrowerIdTextBox.Location = new System.Drawing.Point(545, 134);
+            this.borrowerIdTextBox.Name = "borrowerIdTextBox";
+            this.borrowerIdTextBox.Size = new System.Drawing.Size(100, 20);
+            this.borrowerIdTextBox.TabIndex = 20;
             // 
             // label5
             // 
@@ -199,34 +200,34 @@
             this.label6.TabIndex = 22;
             this.label6.Text = "Borrowers - id";
             // 
-            // dateTimePicker1
+            // FromTimePicker
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(545, 78);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 23;
+            this.FromTimePicker.Location = new System.Drawing.Point(545, 78);
+            this.FromTimePicker.Name = "FromTimePicker";
+            this.FromTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.FromTimePicker.TabIndex = 23;
             // 
-            // dateTimePicker2
+            // ToTimePicker
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(545, 108);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 24;
+            this.ToTimePicker.Location = new System.Drawing.Point(545, 108);
+            this.ToTimePicker.Name = "ToTimePicker";
+            this.ToTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.ToTimePicker.TabIndex = 24;
             // 
             // Library_main_UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.ToTimePicker);
+            this.Controls.Add(this.FromTimePicker);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.borrowerIdTextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bookIdTextBox);
+            this.Controls.Add(this.Insert);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.Update_button);
@@ -259,14 +260,14 @@
         private System.Windows.Forms.Button Update_button;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button Insert;
+        private System.Windows.Forms.TextBox bookIdTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox borrowerIdTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker FromTimePicker;
+        private System.Windows.Forms.DateTimePicker ToTimePicker;
     }
 }

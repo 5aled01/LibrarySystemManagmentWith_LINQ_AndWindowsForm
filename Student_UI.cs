@@ -23,6 +23,7 @@ namespace Library
         {
             try
             {
+
                 int borrower_id = int.Parse(borrower_id_textBox.Text);
                 string student_name = student_name_textBox.Text;
                 int contact_number = int.Parse(contact_number_textBox.Text);
@@ -49,14 +50,17 @@ namespace Library
                 context.SubmitChanges();
                 MessageBox.Show("Successfully Inserted bro");
 
+                loadData();
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show("collone vide ou borrower id deja existe, eseyer de remplire tout les colone correctement");
             }
-            loadData();
-
+            
         }
+            
+        
 
         void loadData()
         {
@@ -103,9 +107,9 @@ namespace Library
         private void Student_UI_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'bibliothequeDataSet.book_details' table. You can move, or remove it, as needed.
-            this.book_detailsTableAdapter.Fill(this.bibliothequeDataSet.book_details);
+        //    this.book_detailsTableAdapter.Fill(this.bibliothequeDataSet.book_details);
             // TODO: This line of code loads data into the 'bibliothequeDataSet.user_details' table. You can move, or remove it, as needed.
-            this.user_detailsTableAdapter.Fill(this.bibliothequeDataSet.user_details);
+          //  this.user_detailsTableAdapter.Fill(this.bibliothequeDataSet.user_details);
 
         }
 
