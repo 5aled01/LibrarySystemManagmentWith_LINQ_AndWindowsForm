@@ -33,29 +33,65 @@ namespace Library
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            int livreid = int.Parse(livre.Text);
-            string BookTitle = textBox2.Text;
-            string language = textBox3.Text;
-            int nbcopy = int.Parse(textBox4.Text);
-            int pub_years = int.Parse(textBox5.Text);
-            string Categorie = textBox6.Text;
-
-            var st = new book_detail
+            try
             {
-              
-                book_title = BookTitle,
-                language_book = language,
-                no_copies = nbcopy,
-                publication_year = pub_years,
-                category = Categorie,
-            };
-            db.book_details.InsertOnSubmit(st);
-            db.SubmitChanges();
-            MessageBox.Show("Successfully Inserted bro");
-            loadData();
+                if (livre.Text == "")
+                {
+                    // int livreid = int.Parse(livre.Text);
+                    string BookTitle = textBox2.Text;
+                    string language = textBox3.Text;
+                    int nbcopy = int.Parse(textBox4.Text);
+                    int pub_years = int.Parse(textBox5.Text);
+                    string Categorie = textBox6.Text;
+
+                    var st = new book_detail
+                    {
+
+                        book_title = BookTitle,
+                        language_book = language,
+                        no_copies = nbcopy,
+                        publication_year = pub_years,
+                        category = Categorie,
+                    };
+                    db.book_details.InsertOnSubmit(st);
+                    db.SubmitChanges();
+                    MessageBox.Show("Successfully Inserted bro");
+                    loadData();
+                }
+                else
+                {
+
+                    int livreid = int.Parse(livre.Text);
+                    string BookTitle = textBox2.Text;
+                    string language = textBox3.Text;
+                    int nbcopy = int.Parse(textBox4.Text);
+                    int pub_years = int.Parse(textBox5.Text);
+                    string Categorie = textBox6.Text;
+
+                    var st = new book_detail
+                    {
+                        id = livreid,
+                        book_title = BookTitle,
+                        language_book = language,
+                        no_copies = nbcopy,
+                        publication_year = pub_years,
+                        category = Categorie,
+                    };
+
+                    db.book_details.InsertOnSubmit(st);
+                    db.SubmitChanges();
+                    MessageBox.Show("Successfully Inserted bro");
+                    loadData();
+                }
+            }catch (Exception ex)
+            {
+                MessageBox.Show("Emty Column !!");
+            }
+
+           
 
         }
-        void loadData()
+            void loadData()
         {
             var st = from s in db.book_details select s;
             dataGridView1.DataSource = st;
@@ -63,7 +99,7 @@ namespace Library
 
         private void Delete_Click_1(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure to delete?", "Delete Student", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBox.Show("Are you sure to delete?", "Delete book", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 try
                 {
@@ -71,10 +107,10 @@ namespace Library
                     db.book_details.DeleteOnSubmit(st);
 
                     db.SubmitChanges();
-                    MessageBox.Show("Student Delete sucssesfully");
+                    MessageBox.Show("Book Delete sucssesfully");
                     loadData();
                 }
-                catch (Exception) { MessageBox.Show("Student Borrow id not valide"); }
+                catch (Exception) { MessageBox.Show("Book id not valide"); }
 
 
 
@@ -117,7 +153,7 @@ namespace Library
             db.SubmitChanges();
             loadData();
 
-            MessageBox.Show("Student Successfully Updated");
+            MessageBox.Show("Book Successfully Updated");
 
         }
 
@@ -152,6 +188,58 @@ namespace Library
         private void Book_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void bookManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            Student_UI student_UI = new Student_UI();
+            student_UI.Tag = this;
+            student_UI.Show(this);
+            Hide();
+
+        }
+
+        private void libraryMainToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            var Library_main_UI = (Library_main_UI)Tag;
+            Library_main_UI.Show();
+            Close();
+        }
+
+        private void livre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) )
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -12,8 +12,11 @@ namespace Library
 {
     public partial class LoginForm : Form
     {
+        
+
         public LoginForm()
         {
+          
             InitializeComponent();
         }
 
@@ -33,16 +36,22 @@ namespace Library
 
             {
 
+
                 MessageBox.Show("Welcome to Library");
-                this.Hide();
+
+
+
+
                 Library_main_UI library_UI = new Library_main_UI();
-                
-                library_UI.Show();
+
+                library_UI.Tag = this;
+                library_UI.Show(this);
+                Hide();
 
             }
             else
             {
-                MessageBox.Show("mote de pass ou nome incorrect");
+                MessageBox.Show("Password or User name not valid");
             }
 
         }
@@ -80,6 +89,30 @@ namespace Library
 
         }
 
+        private void txtPassw_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUser_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPassw_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     }
 }
 

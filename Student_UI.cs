@@ -24,9 +24,9 @@ namespace Library
             try
             {
 
-                int borrower_id = int.Parse(borrower_id_textBox.Text);
                 string student_name = student_name_textBox.Text;
                 int contact_number = int.Parse(contact_number_textBox.Text);
+               
                 DateTime date_of_birth = DateTime.Parse(dateTimePicker.Text);
                 string departement = departement_comboBox.Text;
                 string sex = sex_comboBox.Text;
@@ -39,7 +39,7 @@ namespace Library
                     date_of_birth = date_of_birth,
                     departement = departement,
                     sex = sex,
-                    borrower_id = borrower_id,
+              
                 };
 
 
@@ -72,27 +72,31 @@ namespace Library
 
         private void Ubdate_Click(object sender, EventArgs e)
         {
-            
-            int borrower_id = int.Parse(borrower_id_textBox.Text);
-            string student_name = student_name_textBox.Text;
-            int contact_number = int.Parse(contact_number_textBox.Text);
-            DateTime date_of_birth = DateTime.Parse(dateTimePicker.Text);
-            string departement = departement_comboBox.Text;
-            string sex = sex_comboBox.Text;
-            
-            var st = (from s in context.student_details where s.borrower_id == borrower_id select s).First(); 
+            try
+            {
+                int borrower_id = int.Parse(borrower_id_textBox.Text);
+                string student_name = student_name_textBox.Text;
+                int contact_number = int.Parse(contact_number_textBox.Text);
+                DateTime date_of_birth = DateTime.Parse(dateTimePicker.Text);
+                string departement = departement_comboBox.Text;
+                string sex = sex_comboBox.Text;
 
-            
+                var st = (from s in context.student_details where s.borrower_id == borrower_id select s).First();
+
+
                 st.student_name = student_name;
                 st.contact_number = contact_number;
                 st.date_of_birth = date_of_birth;
                 st.departement = departement;
-               st.sex = sex;
-               st.borrower_id = borrower_id;
-            context.SubmitChanges();
+                st.sex = sex;
+                st.borrower_id = borrower_id;
+                context.SubmitChanges();
 
-            MessageBox.Show("Student Successfully Updated");
-
+                MessageBox.Show("Student Successfully Updated");
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Borrower id alredy exist");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -150,6 +154,53 @@ namespace Library
                 
                
             }
+        }
+
+        private void borrower_id_textBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void libraryMainToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+             
+            var Library_main_UI = (Library_main_UI)Tag;
+            Library_main_UI.Show();
+            Close();
+        }
+
+        private void bookManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Book book_UI = new Book();
+            book_UI.Tag = this;
+            book_UI.Show(this);
+            Hide();
+        }
+
+        private void contact_number_textBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void borrower_id_textBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Resete_Click(object sender, EventArgs e)
+        {
+            loadData();
         }
     }
 }
